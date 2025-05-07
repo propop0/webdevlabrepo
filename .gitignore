@@ -14,8 +14,7 @@ node_modules
 .idea
 .fleet
 
-# Logs
-logs
+# Logslogs
 *.log
 
 # Environment variables

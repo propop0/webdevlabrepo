@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
+import { useFetch } from '#app'
 import type { DataTableColumns } from '#ui/types'
 
 interface Product {
@@ -13,8 +14,6 @@ interface Product {
   thumbnail: string
 }
 
-const products = ref<Product[]>([])
-const loading = ref(false)
 const search = ref('')
 const page = ref(1)
 const pageSize = 10
@@ -28,21 +27,14 @@ const zminaNapryamku = () => {
   sort.value.direction = sort.value.direction === 'asc' ? 'desc' : 'asc'
 }
 
-onMounted(async () => {
-  try {
-    loading.value = true
-    const res = await $fetch('https://dummyjson.com/products?limit=100')
-    products.value = res.products || []
-  } catch (err) {
-    console.error('Помилка при отриманні даних:', err)
-  } finally {
-    loading.value = false
-  }
-})
+const { data, pending, error } = await useFetch<{ products: Product[] }>('https://dummyjson.com/products?limit=100')
+
+const allProducts = computed(() => data.value?.products || [])
+const loading = pending
 
 const vidibraniTovary = computed(() => {
-  if (!search.value) return products.value
-  return products.value.filter(product =>
+  if (!search.value) return allProducts.value
+  return allProducts.value.filter(product =>
       Object.values(product).some(val =>
           String(val).toLowerCase().includes(search.value.toLowerCase())
       )
