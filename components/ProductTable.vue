@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useFetch } from '#app'
-import type { DataTableColumns } from '#ui/types'
 
 interface Product {
   id: number
@@ -40,6 +39,7 @@ const vidibraniTovary = computed(() => {
       )
   )
 })
+
 
 const sortovaniTovary = computed(() => {
   const items = [...vidibraniTovary.value]
