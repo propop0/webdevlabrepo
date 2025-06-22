@@ -21,11 +21,15 @@
               {{ row.user?.name ?? '—' }}
             </span>
           </template>
-
           <template #category.title-data="{ row }">
             <span class="text-white">
               {{ row.category?.title ?? '—' }}
             </span>
+          </template>
+          <template #title-data="{ row }">
+            <NuxtLink :to="`/blog/${row.id}`" class="text-blue-400 hover:underline">
+              {{ row.title }}
+            </NuxtLink>
           </template>
         </UTable>
       </div>
