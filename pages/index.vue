@@ -11,6 +11,9 @@
         Таблиця постів
       </UButton>
       <UButton to="/BlogPostsUi" label="Пости через UTable" color="emerald" />
+      <UButton to="/BlogCategories" color="emerald" size="lg">
+        Категорії блогу
+      </UButton>
     </div>
   </div>
 </template>

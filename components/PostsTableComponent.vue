@@ -3,7 +3,7 @@
     <div class="flex justify-center">
       <div class="w-full">
         <nav class="navbar bg-gray-100 p-4">
-          <a href="/admin/blog/posts/create" class="text-blue-500 underline">Додати</a>
+          <a href="/blog/posts/create" class="text-blue-500 underline">Додати</a>
         </nav>
 
         <div class="card">
